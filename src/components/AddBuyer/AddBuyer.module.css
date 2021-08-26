@@ -1,0 +1,23 @@
+.leadType
+{
+    background-color: white;
+    margin-right: 5px;
+    border: 1px solid #0d6efd;
+    text-align: center;
+    width: 50px;
+    font-size: 12px;
+    display: inline-flex;
+    border-radius: 5px;
+    margin-right: 3px;
+}
+.helpBlock
+{
+    color: red;
+    font-weight: bold;    
+}
+.closeButton
+{
+    color: red;
+    margin-right: 3px;
+    cursor: pointer;
+}
