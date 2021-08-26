@@ -25,18 +25,20 @@ class BuyerAllInfo extends React.Component {
 
                 const quiz = buyers.filter((buyer) => {
                     return buyer.quiz.isEnabled === 1 && buyer.isActive === 1
-                }).sort((x,y) => {
-                    return y.rank - x.rank
+                }).sort((x, y) => {
+                    return x.rank - y.rank
                 });
+
                 const nonquiz = buyers.filter((buyer) => {
                     return buyer.nonQuiz.isEnabled === 1 && buyer.isActive === 1
-                }).sort((x,y) => {
-                    return y.rank - x.rank
-                });;
+                }).sort((x, y) => {
+                    return x.rank - y.rank;
+                });
+
                 const notactive = buyers.filter((buyer) => {
                     return buyer.isActive === 0
                 });
-                // console.log('quiz aho', quiz);
+
                 this.setState({ notactive, nonquiz: nonquiz, quiz: quiz, isLoading: false });
             }).catch((err) => {
                 console.log('this is the error', err);
@@ -63,7 +65,7 @@ class BuyerAllInfo extends React.Component {
                 <Fragment key="firstComponent">
                     <Row>
                         <Col>
-                            <h3 className="text-left">Accept Quiz Leads</h3>
+                            <h3 className="text-left graytext">Accept Quiz Leads</h3>
                         </Col>
                     </Row>
                     <Row>
@@ -87,10 +89,10 @@ class BuyerAllInfo extends React.Component {
             )
         }
         if (this.state.nonquiz.length > 0) {
-            componentsToRender.push(<Fragment  key="secondComponent">
+            componentsToRender.push(<Fragment key="secondComponent">
                 <Row className="mt-5">
                     <Col>
-                        <h3 className="text-left">Accept NonQuiz Leads</h3>
+                        <h3 className="text-left graytext">Accept NonQuiz Leads</h3>
                     </Col>
                 </Row>
                 <Row>
@@ -105,7 +107,7 @@ class BuyerAllInfo extends React.Component {
             componentsToRender.push(<Fragment key="thirdComponent">
                 <Row className="mt-5">
                     <Col>
-                        <h3 className="text-left">Inactive Buyers</h3>
+                        <h3 className="text-left graytext">Inactive Buyers</h3>
                     </Col>
                 </Row>
                 <Row>
@@ -118,10 +120,10 @@ class BuyerAllInfo extends React.Component {
         }
         componentsToRender.push(
             <Row className="mt-5" key="fourthComponent">
-                <Col xs={9}>
+                <Col xs={9} md={10} lg={11}>
                 </Col>
-                <Col xs={3}>
-                    <Button size="sm"  onClick={() => {
+                <Col xs={3} md={2} lg={1}>
+                    <Button size="sm" onClick={() => {
                         this.props.history.push("addBuyer")
                     }} variant="primary" className={styles.fullWidth.concat(" mt-3")}>
                         Add Buyer

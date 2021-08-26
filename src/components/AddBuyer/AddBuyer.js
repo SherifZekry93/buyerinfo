@@ -31,11 +31,11 @@ class AddBuyer extends Component {
             "duration": 0,
             "quiz": {
                 "isEnabled": 0,
-                "percentage": 0
+                "percentage": 100
             },
             "nonQuiz": {
                 "isEnabled": 0,
-                "percentage": 0
+                "percentage": 100
             },
             "workingDays": {
                 "Mon": {
@@ -154,19 +154,19 @@ class AddBuyer extends Component {
             errors["rank"] = "You must enter the rank";
         }
         //QUIZ
-        if (fields.quiz.isEnabled === 1) {
-            if (fields.quiz.percentage === "" || fields.quiz.percentage === 0) {
-                formIsValid = false;
-                errors["percentage"] = "You must enter percentage for quiz transfers";
-            }
-        }
+        // if (fields.quiz.isEnabled === 1) {
+        //     if (fields.quiz.percentage === "" || fields.quiz.percentage === 0) {
+        //         formIsValid = false;
+        //         errors["percentage"] = "You must enter percentage for quiz transfers";
+        //     }
+        // }
         //NonQuiz
-        if (fields.nonQuiz.isEnabled === 1) {
-            if (fields.nonQuiz.percentage === "" || fields.nonQuiz.percentage === 0) {
-                formIsValid = false;
-                errors["nonquizpercentage"] = "You must enter percentage for non quiz transfers";
-            }
-        }
+        // if (fields.nonQuiz.isEnabled === 1) {
+        //     if (fields.nonQuiz.percentage === "" || fields.nonQuiz.percentage === 0) {
+        //         formIsValid = false;
+        //         errors["nonquizpercentage"] = "You must enter percentage for non quiz transfers";
+        //     }
+        // }
         // console.log('', fields.phone);
         if (!fields.phone || fields.phone === ""
             || fields.phone.length < 9) {
@@ -221,7 +221,9 @@ class AddBuyer extends Component {
             this.handleValidation();
         }
     }
+    addNewState = () => {
 
+    }
     updateBuyerObject = (name, e) => {
         const buyer = this.state.buyerObject;
         buyer[name] = e.target.value;
@@ -233,8 +235,9 @@ class AddBuyer extends Component {
         }
     }
 
-    addState = () => {
-        const currentState = this.state.formData.state;
+    addState = (val) => {
+        console.log('this is the val',val);
+        const currentState = val;
         if (!this.state.buyerObject.states.map((st) => st.code).includes(currentState)) {
             const oldBuyer = this.state.buyerObject;
             oldBuyer.states.push({ code: currentState, "isEnabled": 1, "phone": "" });
@@ -265,7 +268,6 @@ class AddBuyer extends Component {
     }
 
 
-
     uploadBuyer = () => {
         axios.post('https://6pd5d2n7g5.execute-api.us-east-1.amazonaws.com/Prod/', JSON.stringify(this.state.buyerObject))
             .then(_ => {
@@ -273,7 +275,7 @@ class AddBuyer extends Component {
                     buyer: this.getDefaultData(),
                     isLoading: false
                 })
-                alert('buyer was added successfully');
+                alert(`buyer was ${this.props.location?.state?.buyer ? "updated" : "added"} successfully`);
                 this.props.history.push('/');
             }
             ).catch(err => {
@@ -401,12 +403,23 @@ class AddBuyer extends Component {
             this.handleValidation();
         }
     }
+    goBack = () => {
+        this.props.history.push("/")
+    }
     render() {
-
         return <>
             <Container>
                 <br></br>
-                <h2 className="text-center"> Add New Buyer</h2>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-around" }}>
+                    <div>
+                        <Button size="sm" style={{ fontWeight: "bold", fontSize: "14px" }} onClick={this.goBack}>
+                            Back
+                        </Button>
+                    </div>
+                    <h2 className="text-center">{this.props.location?.state?.buyer ? "Edit Buyer" : "Add New Buyer"}</h2>
+                    <div>
+                    </div>
+                </div>
                 <Row>
                     <Col md={2} xs={0} />
                     <Col md={8} xs={12}>
@@ -455,9 +468,9 @@ class AddBuyer extends Component {
                                 </Form.Group>
                             </Row>
                             <Row>
-                                <Form.Group as={Col} xs={9} md={9} className="mb-3">
+                                <Form.Group as={Col} xs={12} className="mb-3">
                                     <Form.Label>States:</Form.Label>
-                                    <Form.Select aria-label="Floating label select example" value={this.state.formData.state} onChange={(e) => this.updateFormData("state", e)}>
+                                    <Form.Select as="select" multiple aria-label="Floating label select example" value={this.state.formData.state} onChange={(e) => this.addState(e.target.value)}>
                                         <option value="1">Select State</option>
                                         {
                                             allStateCodes.map((state, item) => {
@@ -465,10 +478,6 @@ class AddBuyer extends Component {
                                             })
                                         }
                                     </Form.Select>
-                                </Form.Group>
-                                <Form.Group as={Col} xs={3} md={3} className="mb-3" >
-                                    <br></br>
-                                    <Button style={{ width: "100%" }} className="mt-2" onClick={this.addState}>Add</Button>
                                 </Form.Group>
                                 <span className={style.helpBlock}>
                                     {this.state.errors?.states}
@@ -510,7 +519,7 @@ class AddBuyer extends Component {
                             <Row>
                                 <Form.Group as={Col} xs={12}>
                                     <br></br>
-                                    <Form.Label>Accept Quiz Leads:</Form.Label>
+                                    <Form.Label >Accept Quiz Leads:</Form.Label>
                                     <br>
                                     </br>
                                     <ButtonGroup >
