@@ -22,23 +22,19 @@ class BuyerAllInfo extends React.Component {
         axios.get(`https://6pd5d2n7g5.execute-api.us-east-1.amazonaws.com/Prod/`)
             .then(res => {
                 const buyers = res.data;
-
                 const quiz = buyers.filter((buyer) => {
                     return buyer.quiz.isEnabled === 1 && buyer.isActive === 1
                 }).sort((x, y) => {
                     return x.rank - y.rank
                 });
-
                 const nonquiz = buyers.filter((buyer) => {
                     return buyer.nonQuiz.isEnabled === 1 && buyer.isActive === 1
                 }).sort((x, y) => {
                     return x.rank - y.rank;
                 });
-
                 const notactive = buyers.filter((buyer) => {
                     return buyer.isActive === 0
                 });
-
                 this.setState({ notactive, nonquiz: nonquiz, quiz: quiz, isLoading: false });
             }).catch((err) => {
                 console.log('this is the error', err);
