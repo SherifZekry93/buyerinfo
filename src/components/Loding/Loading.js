@@ -8,7 +8,5 @@ function Loading() {
         </Spinner>
         <span>Loading...</span>
     </div>
-
 }
-
 export default Loading;

@@ -44,6 +44,7 @@ class BuyerAllInfo extends React.Component {
                 })
             })
     }
+
     componentDidMount() {
         this.getData()
     }
@@ -55,7 +56,7 @@ class BuyerAllInfo extends React.Component {
         if (this.state.hasErrorLodingData) {
             return 'Error Loading Data';
         }
-        let componentsToRender = []
+        let componentsToRender = [];
         if (this.state.quiz.length > 0) {
             componentsToRender.push(
                 <Fragment key="firstComponent">
@@ -65,11 +66,9 @@ class BuyerAllInfo extends React.Component {
                         </Col>
                     </Row>
                     <Row>
-
                         <Col>
                             <BuyerDataTable noHeader={true} fixedHeader={false} buyers={this.state.quiz} type="quiz" />
                         </Col>
-
                     </Row>
                     <Row>
                         <Col xs={9}></Col>
@@ -110,7 +109,9 @@ class BuyerAllInfo extends React.Component {
                     <BuyerDataTable noHeader={true} fixedHeader={false} buyers={this.state.notactive} type="notactive" />
                 </Row>
                 <Row>
-                    <Col xs={9}></Col>
+                    <Col xs={9}>
+                        
+                    </Col>
                 </Row>
             </Fragment>)
         }
