@@ -47,7 +47,7 @@ const BuyerDataTable = (props) => {
         columns.splice(3, 0, {
             name: 'Non Quiz Percentage',
             sortable: true,
-            cell: row => <div data-tag="allowRowEvents"><div style={{}}>{row.nonQuiz.percentage + "%"}</div>{ }</div>
+            cell: row => <div data-tag="allowRowEvents"><div style={{}}>{row.non_quiz.percentage + "%"}</div>{ }</div>
         });
         // columns.splice(3, 0, {
         //     name: 'Accept Quiz',
@@ -80,7 +80,7 @@ const BuyerDataTable = (props) => {
         columns.splice(3, 0, {
             name: 'Non Quiz Percentage',
             sortable: true,
-            cell: row => <div data-tag="allowRowEvents"><div style={{}}>{row.nonQuiz.percentage + "%"}</div>{ }</div>
+            cell: row => <div data-tag="allowRowEvents"><div style={{}}>{row.non_quiz.percentage + "%"}</div>{ }</div>
         })
         columns.splice(3, 0, {
             name: 'Rank',
