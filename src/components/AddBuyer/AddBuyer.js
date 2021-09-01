@@ -26,62 +26,62 @@ class AddBuyer extends Component {
             "name": "",
             "lead_types": [],
             "phone": "",
-            "handoff script": "",
+            "handoff_script": "",
             "sell": 0,
             "duration": 0,
             "quiz": {
-                "isEnabled": 0,
+                "is_enabled": 0,
                 "percentage": 100
             },
-            "nonQuiz": {
-                "isEnabled": 0,
+            "non_quiz": {
+                "is_enabled": 0,
                 "percentage": 100
             },
-            "workingDays": {
+            "working_days": {
                 "Mon": {
-                    "isOpen": 1, //indicates if open on that day
+                    "is_open": 1, //indicates if open on that day
                     "Hours": {
                         "open": 9,
                         "close": 5
                     }
                 },
                 "Tue": {
-                    "isOpen": 1, //indicates if open on that day
+                    "is_open": 1, //indicates if open on that day
                     "Hours": {
                         "open": 9,
                         "close": 5
                     }
                 },
                 "Wed": {
-                    "isOpen": 1, //indicates if open on that day
+                    "is_open": 1, //indicates if open on that day
                     "Hours": {
                         "open": 9,
                         "close": 5
                     }
                 },
                 "Thu": {
-                    "isOpen": 1, //indicates if open on that day
+                    "is_open": 1, //indicates if open on that day
                     "Hours": {
                         "open": 9,
                         "close": 5
                     }
                 },
                 "Fri": {
-                    "isOpen": 1, //indicates if open on that day
+                    "is_open": 1, //indicates if open on that day
                     "Hours": {
                         "open": 9,
                         "close": 5
                     }
                 },
                 "Sat": {
-                    "isOpen": 1, //indicates if open on that day
+                    "is_open": 1, //indicates if open on that day
                     "Hours": {
                         "open": 9,
                         "close": 5
                     }
                 },
                 "Sun": {
-                    "isOpen": 0, //indicates if open on that day
+                    "is_open": 0, //indicates if open on that day
                     "Hours": {
                         "open": "",
                         "close": ""
@@ -91,7 +91,7 @@ class AddBuyer extends Component {
             "states": [
             ],
             "rank": 0,
-            "isActive": 1
+            "is_active": 1
         }
         return buyer ? buyer : defaultData;
     }
@@ -202,7 +202,7 @@ class AddBuyer extends Component {
 
     updateActiveStatus = (val) => {
         const buyerData = this.state.buyerObject;
-        buyerData["isActive"] = parseInt(val, 10);
+        buyerData["is_active"] = parseInt(val, 10);
         this.setState({
             buyerObject: buyerData
         });
@@ -240,7 +240,7 @@ class AddBuyer extends Component {
         const currentState = val;
         if (!this.state.buyerObject.states.map((st) => st.code).includes(currentState)) {
             const oldBuyer = this.state.buyerObject;
-            oldBuyer.states.push({ code: currentState, "isEnabled": 1, "phone": "" });
+            oldBuyer.states.push({ code: currentState, "is_enabled": 1});
             this.setState({
                 buyerObject: oldBuyer
             });
@@ -252,7 +252,7 @@ class AddBuyer extends Component {
 
     updateLeadTypes = () => {
         const oldLeadTypes = this.state.buyerObject.lead_types;
-        oldLeadTypes.push({ "code": this.state.formData.leadType.toUpperCase(), "isEnabled": 1 });
+        oldLeadTypes.push({ "code": this.state.formData.leadType.toUpperCase(), "is_enabled": 1 });
         const newBuyerObject = this.state.buyerObject;
         newBuyerObject.lead_types = oldLeadTypes;
         const newFormData = this.state.formData;
@@ -311,7 +311,7 @@ class AddBuyer extends Component {
 
     updaateQuizStatus = (val) => {
         const newBuyer = this.state.buyerObject;
-        newBuyer.quiz.isEnabled = parseInt(val, 10);
+        newBuyer.quiz.is_enabled = parseInt(val, 10);
         this.setState({
             buyerObject: newBuyer
         });
@@ -322,7 +322,7 @@ class AddBuyer extends Component {
 
     updaateNonQuizStatus = (val) => {
         const newBuyer = this.state.buyerObject;
-        newBuyer.nonQuiz.isEnabled = parseInt(val, 10);
+        newBuyer.non_quiz.is_enabled = parseInt(val, 10);
         this.setState({
             buyerObject: newBuyer
         });
@@ -344,7 +344,7 @@ class AddBuyer extends Component {
 
     updateNonQuizLeadPercentage = (val) => {
         const buyer = this.state.buyerObject;
-        buyer.nonQuiz.percentage = val;
+        buyer.non_quiz.percentage = val;
         this.setState({
             buyerObject: buyer
         });
@@ -355,7 +355,7 @@ class AddBuyer extends Component {
 
     updateDay = (dayName, val) => {
         const currentBuyer = this.state.buyerObject;
-        currentBuyer.workingDays[dayName].isOpen = parseInt(val, 10);
+        currentBuyer.working_days[dayName].is_open = parseInt(val, 10);
         this.setState({
             currentBuyer: currentBuyer
         });
@@ -367,8 +367,8 @@ class AddBuyer extends Component {
     updateOpenTime = (name, val) => {
         const hour = (parseInt(val, 10) / 3600);
         const currentBuyer = this.state.buyerObject;
-        currentBuyer.workingDays[name].Hours.open = hour;
-        console.log(currentBuyer.workingDays[name].Hours.open);
+        currentBuyer.working_days[name].Hours.open = hour;
+        console.log(currentBuyer.working_days[name].Hours.open);
         this.setState({
             currentBuyer: currentBuyer
         });
@@ -380,8 +380,8 @@ class AddBuyer extends Component {
     updateCloseTime = (name, val) => {
         const hour = (parseInt(val) / 3600);
         const currentBuyer = this.state.buyerObject;
-        currentBuyer.workingDays[name].Hours.close = hour;
-        console.log(currentBuyer.workingDays[name].Hours.close);
+        currentBuyer.working_days[name].Hours.close = hour;
+        // console.log(currentBuyer.working_days[name].Hours.close);
         this.setState({
             currentBuyer: currentBuyer
         });
@@ -529,7 +529,7 @@ class AddBuyer extends Component {
                                             variant='outline-success'
                                             name="radioQuiz"
                                             value={1}
-                                            checked={this.state.buyerObject.quiz.isEnabled === 1}
+                                            checked={this.state.buyerObject.quiz.is_enabled === 1}
                                             onChange={(e) => this.updaateQuizStatus(e.currentTarget.value)}
                                         >
                                             Yes
@@ -540,13 +540,13 @@ class AddBuyer extends Component {
                                             variant='outline-danger'
                                             name="radioQuiz"
                                             value={0}
-                                            checked={this.state.buyerObject.quiz.isEnabled === 0}
+                                            checked={this.state.buyerObject.quiz.is_enabled === 0}
                                             onChange={(e) => this.updaateQuizStatus(e.currentTarget.value)}
                                         >
                                             No
                                         </ToggleButton>
                                         {
-                                            this.state.buyerObject.quiz.isEnabled === 1 ?
+                                            this.state.buyerObject.quiz.is_enabled === 1 ?
                                                 <Form.Control className=" ml-2" type="number" placeholder="Percentage" min="1" max="100" value={this.state.buyerObject.quiz.percentage} onChange={(e) => this.updateQuizLeadsPercentage(e.target.value)} /> : ""
                                         }
 
@@ -569,7 +569,7 @@ class AddBuyer extends Component {
                                             variant='outline-success'
                                             name="radiononQuiz"
                                             value={1}
-                                            checked={this.state.buyerObject.nonQuiz.isEnabled === 1}
+                                            checked={this.state.buyerObject.non_quiz.is_enabled === 1}
                                             onChange={(e) => this.updaateNonQuizStatus(e.currentTarget.value)}
                                         >
                                             Yes
@@ -580,14 +580,14 @@ class AddBuyer extends Component {
                                             variant='outline-danger'
                                             name="radiononQuiz"
                                             value={0}
-                                            checked={this.state.buyerObject.nonQuiz.isEnabled === 0}
+                                            checked={this.state.buyerObject.non_quiz.is_enabled === 0}
                                             onChange={(e) => this.updaateNonQuizStatus(e.currentTarget.value)}
                                         >
                                             No
                                         </ToggleButton>
                                         {
-                                            this.state.buyerObject.nonQuiz.isEnabled === 1 ?
-                                                <Form.Control min="1" value={this.state.buyerObject.nonQuiz.percentage} className=" ml-2" type="number" placeholder="Percentage" onChange={(e) => this.updateNonQuizLeadPercentage(e.target.value)} /> : ""
+                                            this.state.buyerObject.non_quiz.is_enabled === 1 ?
+                                                <Form.Control min="1" value={this.state.buyerObject.non_quiz.percentage} className=" ml-2" type="number" placeholder="Percentage" onChange={(e) => this.updateNonQuizLeadPercentage(e.target.value)} /> : ""
                                         }
                                     </ButtonGroup>
                                 </Form.Group>
@@ -607,7 +607,7 @@ class AddBuyer extends Component {
                                             variant='outline-success'
                                             name="radio"
                                             value="1"
-                                            checked={this.state.buyerObject.isActive === 1}
+                                            checked={this.state.buyerObject.is_active === 1}
                                             onChange={(e) => this.updateActiveStatus(e.currentTarget.value)}>
                                             Yes
                                         </ToggleButton>
@@ -617,7 +617,7 @@ class AddBuyer extends Component {
                                             variant='outline-danger'
                                             name="radio"
                                             value="0"
-                                            checked={this.state.buyerObject.isActive === 0}
+                                            checked={this.state.buyerObject.is_active === 0}
                                             onChange={(e) => this.updateActiveStatus(e.currentTarget.value)}>
                                             No
                                         </ToggleButton>
@@ -634,10 +634,10 @@ class AddBuyer extends Component {
                                 id1="mon"
                                 id2="mon2"
                                 name="Mon"
-                                checked={this.state.buyerObject.workingDays.Mon.isOpen}
+                                checked={this.state.buyerObject.working_days.Mon.is_open}
                                 changeDay={this.updateDay}
-                                openValue={this.state.buyerObject.workingDays.Mon.Hours.open}
-                                closeValue={this.state.buyerObject.workingDays.Mon.Hours.close}
+                                openValue={this.state.buyerObject.working_days.Mon.Hours.open}
+                                closeValue={this.state.buyerObject.working_days.Mon.Hours.close}
                                 openTimeChange={this.updateOpenTime}
                                 closeTimeChange={this.updateCloseTime}
                             />
@@ -646,10 +646,10 @@ class AddBuyer extends Component {
                                 name="Tue"
                                 id1="tue"
                                 id2="tue2"
-                                checked={this.state.buyerObject.workingDays.Tue.isOpen}
+                                checked={this.state.buyerObject.working_days.Tue.is_open}
                                 changeDay={this.updateDay}
-                                openValue={this.state.buyerObject.workingDays.Tue.Hours.open}
-                                closeValue={this.state.buyerObject.workingDays.Tue.Hours.close}
+                                openValue={this.state.buyerObject.working_days.Tue.Hours.open}
+                                closeValue={this.state.buyerObject.working_days.Tue.Hours.close}
                                 openTimeChange={this.updateOpenTime}
                                 closeTimeChange={this.updateCloseTime}
                             />
@@ -658,10 +658,10 @@ class AddBuyer extends Component {
                                 name="Wed"
                                 id1="wed"
                                 id2="wed2"
-                                checked={this.state.buyerObject.workingDays.Wed.isOpen}
+                                checked={this.state.buyerObject.working_days.Wed.is_open}
                                 changeDay={this.updateDay}
-                                openValue={this.state.buyerObject.workingDays.Wed.Hours.open}
-                                closeValue={this.state.buyerObject.workingDays.Wed.Hours.close}
+                                openValue={this.state.buyerObject.working_days.Wed.Hours.open}
+                                closeValue={this.state.buyerObject.working_days.Wed.Hours.close}
                                 openTimeChange={this.updateOpenTime}
                                 closeTimeChange={this.updateCloseTime}
                             />
@@ -670,10 +670,10 @@ class AddBuyer extends Component {
                                 name="Thu"
                                 id1="thu"
                                 id2="thu2"
-                                checked={this.state.buyerObject.workingDays.Thu.isOpen}
+                                checked={this.state.buyerObject.working_days.Thu.is_open}
                                 changeDay={this.updateDay}
-                                openValue={this.state.buyerObject.workingDays.Thu.Hours.open}
-                                closeValue={this.state.buyerObject.workingDays.Thu.Hours.close}
+                                openValue={this.state.buyerObject.working_days.Thu.Hours.open}
+                                closeValue={this.state.buyerObject.working_days.Thu.Hours.close}
                                 openTimeChange={this.updateOpenTime}
                                 closeTimeChange={this.updateCloseTime}
                             />
@@ -682,10 +682,10 @@ class AddBuyer extends Component {
                                 name="Fri"
                                 id1="fri"
                                 id2="fri2"
-                                checked={this.state.buyerObject.workingDays.Fri.isOpen}
+                                checked={this.state.buyerObject.working_days.Fri.is_open}
                                 changeDay={this.updateDay}
-                                openValue={this.state.buyerObject.workingDays.Fri.Hours.open}
-                                closeValue={this.state.buyerObject.workingDays.Fri.Hours.close}
+                                openValue={this.state.buyerObject.working_days.Fri.Hours.open}
+                                closeValue={this.state.buyerObject.working_days.Fri.Hours.close}
                                 openTimeChange={this.updateOpenTime}
                                 closeTimeChange={this.updateCloseTime}
                             />
@@ -694,10 +694,10 @@ class AddBuyer extends Component {
                                 name="Sat"
                                 id1="sat"
                                 id2="sat2"
-                                checked={this.state.buyerObject.workingDays.Sat.isOpen}
+                                checked={this.state.buyerObject.working_days.Sat.is_open}
                                 changeDay={this.updateDay}
-                                openValue={this.state.buyerObject.workingDays.Sat.Hours.open}
-                                closeValue={this.state.buyerObject.workingDays.Sat.Hours.close}
+                                openValue={this.state.buyerObject.working_days.Sat.Hours.open}
+                                closeValue={this.state.buyerObject.working_days.Sat.Hours.close}
                                 openTimeChange={this.updateOpenTime}
                                 closeTimeChange={this.updateCloseTime}
                             />
@@ -706,10 +706,10 @@ class AddBuyer extends Component {
                                 name="Sun"
                                 id1="sun"
                                 id2="sun2"
-                                checked={this.state.buyerObject.workingDays.Sun.isOpen}
+                                checked={this.state.buyerObject.working_days.Sun.is_open}
                                 changeDay={this.updateDay}
-                                openValue={this.state.buyerObject.workingDays.Sun.Hours.open}
-                                closeValue={this.state.buyerObject.workingDays.Sun.Hours.close}
+                                openValue={this.state.buyerObject.working_days.Sun.Hours.open}
+                                closeValue={this.state.buyerObject.working_days.Sun.Hours.close}
                                 openTimeChange={this.updateOpenTime}
                                 closeTimeChange={this.updateCloseTime}
                             />

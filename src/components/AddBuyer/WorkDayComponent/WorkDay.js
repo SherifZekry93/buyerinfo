@@ -54,7 +54,7 @@ class WorkDay extends Component {
                     From
                 </Form.Label>
                 <TimePicker value={this.props.openValue * 3600}
-                    step={60}
+                    step={30}
                     disabled={this.props.checked !== 1}
                     onChange={(e) => this.handleOpenTimeChange(e)} />
             </Col>
@@ -63,7 +63,7 @@ class WorkDay extends Component {
                     To
                 </Form.Label>
                 <TimePicker
-                    step={60}
+                    step={30}
                     value={this.props.closeValue * 3600}
                     disabled={this.props.checked !== 1}
                     onChange={(e) => this.handleCloseTimeChange(e)} />

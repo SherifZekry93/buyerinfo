@@ -23,17 +23,17 @@ class BuyerAllInfo extends React.Component {
             .then(res => {
                 const buyers = res.data;
                 const quiz = buyers.filter((buyer) => {
-                    return buyer.quiz.isEnabled === 1 && buyer.isActive === 1
+                    return buyer.quiz.is_enabled === 1 && buyer.is_active === 1
                 }).sort((x, y) => {
                     return x.rank - y.rank
                 });
                 const nonquiz = buyers.filter((buyer) => {
-                    return buyer.nonQuiz.isEnabled === 1 && buyer.isActive === 1
+                    return buyer.non_quiz.is_enabled === 1 && buyer.is_active === 1
                 }).sort((x, y) => {
                     return x.rank - y.rank;
                 });
                 const notactive = buyers.filter((buyer) => {
-                    return buyer.isActive === 0
+                    return buyer.is_active === 0
                 });
                 this.setState({ notactive, nonquiz: nonquiz, quiz: quiz, isLoading: false });
             }).catch((err) => {
