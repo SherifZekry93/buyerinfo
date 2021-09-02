@@ -31,11 +31,13 @@ class AddBuyer extends Component {
             "duration": 0,
             "quiz": {
                 "is_enabled": 0,
-                "percentage": 100
+                "rank": null,
+                "percentage": null
             },
             "non_quiz": {
                 "is_enabled": 0,
-                "percentage": 100
+                "rank": null,
+                "percentage": null
             },
             "working_days": {
                 "Mon": {
@@ -90,7 +92,7 @@ class AddBuyer extends Component {
             },
             "states": [
             ],
-            "rank": 0,
+            // "rank": 0,
             "is_active": 1
         }
         return buyer ? buyer : defaultData;
@@ -236,11 +238,11 @@ class AddBuyer extends Component {
     }
 
     addState = (val) => {
-        console.log('this is the val',val);
+        console.log('this is the val', val);
         const currentState = val;
         if (!this.state.buyerObject.states.map((st) => st.code).includes(currentState)) {
             const oldBuyer = this.state.buyerObject;
-            oldBuyer.states.push({ code: currentState, "is_enabled": 1});
+            oldBuyer.states.push({ code: currentState, "is_enabled": 1 });
             this.setState({
                 buyerObject: oldBuyer
             });
@@ -507,7 +509,7 @@ class AddBuyer extends Component {
                                     <Form.Control type="number" placeholder="Duration" value={this.state.buyerObject.duration} onChange={(e) => this.updateBuyerObject("duration", e)} />
                                 </Form.Group>
                             </Row>
-                            <Row>
+                            {/* <Row>
                                 <Form.Group>
                                     <Form.Label>Rank:</Form.Label>
                                     <Form.Control type="number" placeholder="Rank" value={this.state.buyerObject.rank} onChange={(e) => this.updateBuyerObject("rank", e)} />
@@ -515,14 +517,15 @@ class AddBuyer extends Component {
                                         {this.state.errors?.rank}
                                     </span>
                                 </Form.Group>
-                            </Row>
+                            </Row> */}
                             <Row>
                                 <Form.Group as={Col} xs={12}>
                                     <br></br>
                                     <Form.Label >Accept Quiz Leads:</Form.Label>
                                     <br>
                                     </br>
-                                    <ButtonGroup >
+
+                                    <ButtonGroup style={{ width: "100%" }} >
                                         <ToggleButton
                                             id="radio2-0"
                                             type="radio"
@@ -547,9 +550,13 @@ class AddBuyer extends Component {
                                         </ToggleButton>
                                         {
                                             this.state.buyerObject.quiz.is_enabled === 1 ?
-                                                <Form.Control className=" ml-2" type="number" placeholder="Percentage" min="1" max="100" value={this.state.buyerObject.quiz.percentage} onChange={(e) => this.updateQuizLeadsPercentage(e.target.value)} /> : ""
+                                                <Form.Control className=" ml-2" type="number" placeholder="Percentage" min="1" max="100" value={this.state.buyerObject.quiz.percentage} onChange={(e) => this.updateQuizLeadsPercentage(e.target.value)} />
+                                                : ""
                                         }
-
+                                        {
+                                            this.state.buyerObject.quiz.is_enabled === 1 ?
+                                                <Form.Control className=" ml-2" type="number" placeholder="Rank" min="1" max="100" value={this.state.buyerObject.quiz.rank} onChange={(e) => this.updateQuizLeadsPercentage(e.target.value)} /> : ""
+                                        }
                                     </ButtonGroup>
 
                                 </Form.Group>
@@ -562,7 +569,7 @@ class AddBuyer extends Component {
                                     <Form.Label>Accept Non Quiz Leads:</Form.Label>
                                     <br>
                                     </br>
-                                    <ButtonGroup >
+                                    <ButtonGroup style={{ width: "100%" }}>
                                         <ToggleButton
                                             id="radio3-0"
                                             type="radio"
@@ -588,6 +595,10 @@ class AddBuyer extends Component {
                                         {
                                             this.state.buyerObject.non_quiz.is_enabled === 1 ?
                                                 <Form.Control min="1" value={this.state.buyerObject.non_quiz.percentage} className=" ml-2" type="number" placeholder="Percentage" onChange={(e) => this.updateNonQuizLeadPercentage(e.target.value)} /> : ""
+                                        }
+                                        {
+                                            this.state.buyerObject.non_quiz.is_enabled === 1 ?
+                                                <Form.Control min="1" value={this.state.buyerObject.non_quiz.rank} className=" ml-2" type="number" placeholder="Rank" onChange={(e) => this.updateNonQuizLeadPercentage(e.target.value)} /> : ""
                                         }
                                     </ButtonGroup>
                                 </Form.Group>

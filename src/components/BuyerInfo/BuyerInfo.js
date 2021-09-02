@@ -25,12 +25,12 @@ class BuyerAllInfo extends React.Component {
                 const quiz = buyers.filter((buyer) => {
                     return buyer.quiz.is_enabled === 1 && buyer.is_active === 1
                 }).sort((x, y) => {
-                    return x.rank - y.rank
+                    return x.quiz.rank - y.quiz.rank
                 });
                 const nonquiz = buyers.filter((buyer) => {
                     return buyer.non_quiz.is_enabled === 1 && buyer.is_active === 1
                 }).sort((x, y) => {
-                    return x.rank - y.rank;
+                    return x.non_quiz.rank - y.non_quiz.rank;
                 });
                 const notactive = buyers.filter((buyer) => {
                     return buyer.is_active === 0
@@ -94,7 +94,9 @@ class BuyerAllInfo extends React.Component {
                     <BuyerDataTable noHeader={true} fixedHeader={false} buyers={this.state.nonquiz} type="nonquiz" />
                 </Row>
                 <Row>
-                    <Col xs={9}></Col>
+                    <Col xs={9}>
+
+                    </Col>
                 </Row>
             </Fragment>)
         }

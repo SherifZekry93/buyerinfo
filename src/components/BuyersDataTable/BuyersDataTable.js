@@ -72,7 +72,7 @@ const BuyerDataTable = (props) => {
         columns.splice(3, 0, {
             name: 'Rank',
             sortable: true,
-            cell: row => <div data-tag="allowRowEvents"><div style={{}}>{row.rank}</div>{ }</div>
+            cell: row => <div data-tag="allowRowEvents"><div style={{}}>{row.quiz.rank}</div>{ }</div>
         })
     }
 
@@ -85,7 +85,7 @@ const BuyerDataTable = (props) => {
         columns.splice(3, 0, {
             name: 'Rank',
             sortable: true,
-            cell: row => <div data-tag="allowRowEvents"><div style={{}}>{row.rank}</div>{ }</div>
+            cell: row => <div data-tag="allowRowEvents"><div style={{}}>{row.non_quiz.rank}</div>{ }</div>
         })
     }
     columns.push({
