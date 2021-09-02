@@ -112,7 +112,7 @@ class BuyerAllInfo extends React.Component {
                 </Row>
                 <Row>
                     <Col xs={9}>
-                        
+
                     </Col>
                 </Row>
             </Fragment>)

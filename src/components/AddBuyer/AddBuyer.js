@@ -343,7 +343,16 @@ class AddBuyer extends Component {
             this.handleValidation();
         }
     }
-
+    updateQuizLeadRank = (val) => {
+        const buyer = this.state.buyerObject;
+        buyer.quiz.rank = parseInt(val);
+        this.setState({
+            buyerObject: buyer
+        });
+        if (this.state.formData.isSubmitted) {
+            this.handleValidation();
+        }
+    }
     updateNonQuizLeadPercentage = (val) => {
         const buyer = this.state.buyerObject;
         buyer.non_quiz.percentage = val;
@@ -354,7 +363,16 @@ class AddBuyer extends Component {
             this.handleValidation();
         }
     }
-
+    updateNonQuizLeadRank = (val) => {
+        const buyer = this.state.buyerObject;
+        buyer.non_quiz.percentage = val;
+        this.setState({
+            buyerObject: buyer
+        });
+        if (this.state.formData.isSubmitted) {
+            this.handleValidation();
+        }
+    }
     updateDay = (dayName, val) => {
         const currentBuyer = this.state.buyerObject;
         currentBuyer.working_days[dayName].is_open = parseInt(val, 10);
@@ -555,7 +573,7 @@ class AddBuyer extends Component {
                                         }
                                         {
                                             this.state.buyerObject.quiz.is_enabled === 1 ?
-                                                <Form.Control className=" ml-2" type="number" placeholder="Rank" min="1" max="100" value={this.state.buyerObject.quiz.rank} onChange={(e) => this.updateQuizLeadsPercentage(e.target.value)} /> : ""
+                                                <Form.Control className=" ml-2" type="number" placeholder="Rank" min="1" max="100" value={this.state.buyerObject.quiz.rank} onChange={(e) => this.updateQuizLeadRank(e.target.value)} /> : ""
                                         }
                                     </ButtonGroup>
 
@@ -598,7 +616,7 @@ class AddBuyer extends Component {
                                         }
                                         {
                                             this.state.buyerObject.non_quiz.is_enabled === 1 ?
-                                                <Form.Control min="1" value={this.state.buyerObject.non_quiz.rank} className=" ml-2" type="number" placeholder="Rank" onChange={(e) => this.updateNonQuizLeadPercentage(e.target.value)} /> : ""
+                                                <Form.Control min="1" value={this.state.buyerObject.non_quiz.rank} className=" ml-2" type="number" placeholder="Rank" onChange={(e) => this.updateNonQuizLeadRank(e.target.value)} /> : ""
                                         }
                                     </ButtonGroup>
                                 </Form.Group>

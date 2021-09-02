@@ -68,12 +68,12 @@ const BuyerDataTable = (props) => {
             name: 'Quiz Percentage',
             sortable: true,
             cell: row => <div data-tag="allowRowEvents"><div style={{}}>{row.quiz.percentage + "%"}</div>{ }</div>
-        })
+        });
         columns.splice(3, 0, {
             name: 'Rank',
             sortable: true,
             cell: row => <div data-tag="allowRowEvents"><div style={{}}>{row.quiz.rank}</div>{ }</div>
-        })
+        });
     }
 
     if (props.type === "nonquiz") {
@@ -81,12 +81,12 @@ const BuyerDataTable = (props) => {
             name: 'Non Quiz Percentage',
             sortable: true,
             cell: row => <div data-tag="allowRowEvents"><div style={{}}>{row.non_quiz.percentage + "%"}</div>{ }</div>
-        })
+        });
         columns.splice(3, 0, {
             name: 'Rank',
             sortable: true,
             cell: row => <div data-tag="allowRowEvents"><div style={{}}>{row.non_quiz.rank}</div>{ }</div>
-        })
+        });
     }
     columns.push({
         name: 'Edit',
