@@ -77,7 +77,7 @@ class AddBuyer extends Component {
                     "is_open": 1, //indicates if open on that day
                     "Hours": {
                         "open": 9,
-                        "close": 17
+                        "close": 15
                     }
                 },
                 "Sun": {
