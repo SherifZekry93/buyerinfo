@@ -314,6 +314,10 @@ class AddBuyer extends Component {
     updaateQuizStatus = (val) => {
         const newBuyer = this.state.buyerObject;
         newBuyer.quiz.is_enabled = parseInt(val, 10);
+        if (!quiz.is_enabled) {
+            newBuyer.quiz.percentage = 0;
+            newBuyer.quiz.rank = 0;
+        }
         this.setState({
             buyerObject: newBuyer
         });
@@ -325,6 +329,10 @@ class AddBuyer extends Component {
     updaateNonQuizStatus = (val) => {
         const newBuyer = this.state.buyerObject;
         newBuyer.non_quiz.is_enabled = parseInt(val, 10);
+        if (!non_quiz.is_enabled) {
+            newBuyer.non_quiz.percentage = 0;
+            newBuyer.non_quiz.rank = 0;
+        }
         this.setState({
             buyerObject: newBuyer
         });
