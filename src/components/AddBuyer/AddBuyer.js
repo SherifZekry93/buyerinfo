@@ -42,42 +42,42 @@ class AddBuyer extends Component {
                     "is_open": 1, //indicates if open on that day
                     "Hours": {
                         "open": 9,
-                        "close": 5
+                        "close": 17
                     }
                 },
                 "Tue": {
                     "is_open": 1, //indicates if open on that day
                     "Hours": {
                         "open": 9,
-                        "close": 5
+                        "close": 17
                     }
                 },
                 "Wed": {
                     "is_open": 1, //indicates if open on that day
                     "Hours": {
                         "open": 9,
-                        "close": 5
+                        "close": 17
                     }
                 },
                 "Thu": {
                     "is_open": 1, //indicates if open on that day
                     "Hours": {
                         "open": 9,
-                        "close": 5
+                        "close": 17
                     }
                 },
                 "Fri": {
                     "is_open": 1, //indicates if open on that day
                     "Hours": {
                         "open": 9,
-                        "close": 5
+                        "close": 17
                     }
                 },
                 "Sat": {
                     "is_open": 1, //indicates if open on that day
                     "Hours": {
                         "open": 9,
-                        "close": 5
+                        "close": 17
                     }
                 },
                 "Sun": {
