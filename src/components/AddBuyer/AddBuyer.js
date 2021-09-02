@@ -514,6 +514,10 @@ class AddBuyer extends Component {
                                     {this.state.errors?.states}
                                 </span>
                                 <Form.Group>
+                                    <h5>{this.state.buyerObject.states.length > 0 ? this.state.buyerObject.states.length + " states" : ""}</h5>
+                                </Form.Group>
+                                <Form.Group>
+
                                     <div style={{ display: "flex", flexWrap: "wrap" }}>
                                         {this.state.buyerObject.states.map((state, item) => {
                                             return <span key={item} className={style.leadType.concat(" mb-2")}><span style={{ "flex": 1 }}> {state.code} </span><span className={style.closeButton} onClick={() => {
