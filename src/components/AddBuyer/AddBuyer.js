@@ -332,9 +332,9 @@ class AddBuyer extends Component {
         if (!newBuyer.non_quiz.is_enabled) {
             console.log(newBuyer.non_quiz.percentage);
             console.log(newBuyer.non_quiz.rank);
-            
-//            newBuyer.non_quiz.percentage = 0;
- //           newBuyer.non_quiz.rank = 0;
+
+            //            newBuyer.non_quiz.percentage = 0;
+            //           newBuyer.non_quiz.rank = 0;
         }
         this.setState({
             buyerObject: newBuyer
@@ -366,7 +366,7 @@ class AddBuyer extends Component {
     }
     updateNonQuizLeadPercentage = (val) => {
         const buyer = this.state.buyerObject;
-        buyer.non_quiz.percentage = val;
+        buyer.non_quiz.percentage = parseInt(val, 10);
         this.setState({
             buyerObject: buyer
         });
@@ -376,7 +376,7 @@ class AddBuyer extends Component {
     }
     updateNonQuizLeadRank = (val) => {
         const buyer = this.state.buyerObject;
-        buyer.non_quiz.percentage = val;
+        buyer.non_quiz.rank = val;
         this.setState({
             buyerObject: buyer
         });
