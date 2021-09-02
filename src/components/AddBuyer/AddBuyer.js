@@ -543,7 +543,7 @@ class AddBuyer extends Component {
                                     <br>
                                     </br>
 
-                                    <ButtonGroup style={{ width: "100%" }} >
+                                    <ButtonGroup style={{ width: this.state.buyerObject.quiz.is_enabled ? "100%" : "" }} >
                                         <ToggleButton
                                             id="radio2-0"
                                             type="radio"
@@ -567,9 +567,16 @@ class AddBuyer extends Component {
                                             No
                                         </ToggleButton>
                                         {
+                                            this.state.buyerObject.quiz.is_enabled === 1 ? <span style={{ margin: "8px" }}> Percentage:</span> : ""
+                                        }
+                                        {
+
                                             this.state.buyerObject.quiz.is_enabled === 1 ?
                                                 <Form.Control className=" ml-2" type="number" placeholder="Percentage" min="1" max="100" value={this.state.buyerObject.quiz.percentage} onChange={(e) => this.updateQuizLeadsPercentage(e.target.value)} />
                                                 : ""
+                                        }
+                                        {
+                                            this.state.buyerObject.quiz.is_enabled === 1 ? <span style={{ margin: "8px" }}> Rank:</span> : ""
                                         }
                                         {
                                             this.state.buyerObject.quiz.is_enabled === 1 ?
@@ -587,7 +594,7 @@ class AddBuyer extends Component {
                                     <Form.Label>Accept Non Quiz Leads:</Form.Label>
                                     <br>
                                     </br>
-                                    <ButtonGroup style={{ width: "100%" }}>
+                                    <ButtonGroup style={{ width: this.state.buyerObject.non_quiz.is_enabled ? "100%" : "" }}>
                                         <ToggleButton
                                             id="radio3-0"
                                             type="radio"
@@ -611,9 +618,16 @@ class AddBuyer extends Component {
                                             No
                                         </ToggleButton>
                                         {
+                                            this.state.buyerObject.non_quiz.is_enabled === 1 ? <span style={{ margin: "8px" }}> Percentage:</span> : ""
+                                        }
+                                        {
                                             this.state.buyerObject.non_quiz.is_enabled === 1 ?
                                                 <Form.Control min="1" value={this.state.buyerObject.non_quiz.percentage} className=" ml-2" type="number" placeholder="Percentage" onChange={(e) => this.updateNonQuizLeadPercentage(e.target.value)} /> : ""
                                         }
+                                        {
+                                            this.state.buyerObject.non_quiz.is_enabled === 1 ? <span style={{ margin: "8px" }}> Rank:</span> : ""
+                                        }
+
                                         {
                                             this.state.buyerObject.non_quiz.is_enabled === 1 ?
                                                 <Form.Control min="1" value={this.state.buyerObject.non_quiz.rank} className=" ml-2" type="number" placeholder="Rank" onChange={(e) => this.updateNonQuizLeadRank(e.target.value)} /> : ""
